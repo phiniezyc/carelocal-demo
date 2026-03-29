@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CareLocal — Find Trusted In-Home Senior Care Near You</title>
+  <!-- Google Analytics — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -724,6 +732,11 @@
       }
     }
 
+    // Analytics helper
+    function track(event, params) {
+      if (typeof gtag !== 'undefined') gtag('event', event, params || {});
+    }
+
     // Calculate
     function calculateAndShow() {
       const weeks = 4.33;
@@ -740,6 +753,15 @@
       const levelNames = { companion: 'Companion Care', personal: 'Personal Care', skilled: 'Skilled Nursing', memory: 'Memory Care' };
       document.getElementById('resultBreakdown').textContent =
         state.hours + ' hrs/week · ' + levelNames[state.careLevel] + ' · $' + state.rateMin + '–$' + state.rateMax + '/hr';
+
+      // Conversion: estimator completed
+      track('estimator_complete', {
+        city: state.city,
+        care_level: state.careLevel,
+        hours_per_week: state.hours,
+        estimated_monthly_low: low,
+        estimated_monthly_high: high,
+      });
 
       // Show agency matches
       const agencies = getMatchedAgencies();
@@ -814,6 +836,13 @@
     updateProgress(1);
     document.getElementById('step1Btn').classList.add('opacity-50');
 
+    // Step progress tracking — fire when user advances
+    const origNextStep = nextStep;
+    function nextStep(step) {
+      origNextStep(step);
+      track('estimator_step', { step_number: step, city: state.city || null, care_level: state.careLevel || null });
+    }
+
     // Contact modal
     function openContact(agencyName) {
       const modal = document.getElementById('contactModal');
@@ -843,6 +872,13 @@
       modal.classList.remove('hidden');
       modal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+
+      // Conversion: family chose a service to contact
+      track('contact_intent', {
+        agency_name: agencyName,
+        city: state.city || null,
+        care_level: state.careLevel || null,
+      });
     }
 
     function closeContact() {
@@ -856,6 +892,15 @@
       e.preventDefault();
       document.getElementById('contactForm').classList.add('hidden');
       document.getElementById('contactSuccess').classList.remove('hidden');
+
+      // Conversion: contact form submitted — this is the primary conversion goal
+      const agencyName = document.getElementById('modalAgencyName').textContent;
+      track('contact_submitted', {
+        agency_name: agencyName,
+        city: state.city || null,
+        care_level: state.careLevel || null,
+        hours_per_week: state.hours || null,
+      });
     }
   </script>
 </body>
