@@ -12,6 +12,17 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+  <!-- Meta (Facebook) Pixel — replace XXXXXXXXXXXXXXXXX with your Pixel ID from Meta Ads Manager → Data Sources -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXXXXXXXXXX');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -762,6 +773,10 @@
         estimated_monthly_low: low,
         estimated_monthly_high: high,
       });
+      // Meta Pixel: ViewContent = saw their estimate (mid-funnel signal for Facebook)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', { content_name: 'cost_estimate', content_category: state.careLevel, value: mid, currency: 'USD' });
+      }
 
       // Show agency matches
       const agencies = getMatchedAgencies();
@@ -901,6 +916,10 @@
         care_level: state.careLevel || null,
         hours_per_week: state.hours || null,
       });
+      // Meta Pixel: Lead event (primary conversion for Facebook campaigns)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', { content_name: agencyName, content_category: state.careLevel || 'senior_care' });
+      }
     }
   </script>
 </body>
