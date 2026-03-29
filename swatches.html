@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareLocal — Palette Options</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f5f5f3; color: #1a1a1a; padding: 40px 24px; }
+    h1 { font-size: 18px; font-weight: 600; margin-bottom: 6px; color: #111; }
+    .subtitle { font-size: 13px; color: #777; margin-bottom: 40px; }
+
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+
+    .palette-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .palette-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .palette-label { font-size: 13px; font-weight: 600; color: #111; }
+    .palette-tag { font-size: 11px; color: #999; background: #f5f5f3; padding: 2px 8px; border-radius: 20px; }
+
+    /* Swatch row */
+    .swatch-row { display: flex; height: 52px; }
+    .swatch { flex: 1; position: relative; }
+    .swatch:hover .swatch-hex { opacity: 1; }
+    .swatch-hex {
+      position: absolute;
+      bottom: 4px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      opacity: 0;
+      transition: opacity 0.15s;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Mini UI preview */
+    .preview {
+      padding: 16px 20px 20px;
+    }
+    .preview-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .preview-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .preview-text { font-size: 12px; font-weight: 500; }
+
+    .preview-card {
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid;
+    }
+    .preview-card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .preview-card-sub { font-size: 11px; margin-bottom: 10px; color: #666; }
+    .preview-badges { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .preview-badge { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
+    .preview-btn { font-size: 12px; font-weight: 600; padding: 7px 16px; border-radius: 8px; border: none; cursor: pointer; color: white; display: inline-block; }
+    .preview-link { font-size: 11px; font-weight: 500; text-decoration: none; }
+    .preview-footer { display: flex; justify-content: space-between; align-items: center; }
+
+    .section-bg-preview {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 12px;
+      border: 1px dashed #ddd;
+    }
+    .section-bg-preview span { font-weight: 600; font-size: 11px; }
+  </style>
+</head>
+<body>
+
+<h1>CareLocal — Palette Options</h1>
+<p class="subtitle">Hover swatches to see hex codes. Each shows the page bg, card border, primary, mid, light, and accent.</p>
+
+<div class="palette-grid">
+
+  <!-- OPTION A: Soft Slate Blue -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">A — Soft Slate Blue</span>
+      <span class="palette-tag">Calm · Trusted · Modern</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F4F7FB"><span class="swatch-hex" style="color:#999">#F4F7FB</span></div>
+      <div class="swatch" style="background:#D5E3F0"><span class="swatch-hex" style="color:#555">#D5E3F0</span></div>
+      <div class="swatch" style="background:#5B89B4"><span class="swatch-hex">#5B89B4</span></div>
+      <div class="swatch" style="background:#3F6E9A"><span class="swatch-hex">#3F6E9A</span></div>
+      <div class="swatch" style="background:#2B5280"><span class="swatch-hex">#2B5280</span></div>
+      <div class="swatch" style="background:#7BAFD4"><span class="swatch-hex">#7BAFD4</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#F4F7FB">Page background <span style="color:#3F6E9A">#F4F7FB</span></div>
+      <div class="preview-card" style="background:white; border-color:#D5E3F0">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#EBF3FA; color:#2B5280">✓ Licensed</span>
+          <span class="preview-badge" style="background:#EBF3FA; color:#2B5280">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#3F6E9A">View Profile →</a>
+          <button class="preview-btn" style="background:#3F6E9A">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#EBF3FA">
+        <div class="preview-dot" style="background:#5B89B4"></div>
+        <span class="preview-text" style="color:#2B5280">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B: Soft Sage Green (no terracotta) -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">B — Muted Sage</span>
+      <span class="palette-tag">Natural · Warm · Human</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F4F8F5"><span class="swatch-hex" style="color:#999">#F4F8F5</span></div>
+      <div class="swatch" style="background:#C8DDD0"><span class="swatch-hex" style="color:#555">#C8DDD0</span></div>
+      <div class="swatch" style="background:#6B9E7A"><span class="swatch-hex">#6B9E7A</span></div>
+      <div class="swatch" style="background:#4F8160"><span class="swatch-hex">#4F8160</span></div>
+      <div class="swatch" style="background:#34634A"><span class="swatch-hex">#34634A</span></div>
+      <div class="swatch" style="background:#9DC4A8"><span class="swatch-hex">#9DC4A8</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#F4F8F5">Page background <span style="color:#4F8160">#F4F8F5</span></div>
+      <div class="preview-card" style="background:white; border-color:#C8DDD0">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#E2F0E6; color:#34634A">✓ Licensed</span>
+          <span class="preview-badge" style="background:#E2F0E6; color:#34634A">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#4F8160">View Profile →</a>
+          <button class="preview-btn" style="background:#4F8160">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#E2F0E6">
+        <div class="preview-dot" style="background:#6B9E7A"></div>
+        <span class="preview-text" style="color:#34634A">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C: Soft Lavender Purple -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">C — Soft Lavender</span>
+      <span class="palette-tag">Compassionate · Dignified · Distinct</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F6F4FB"><span class="swatch-hex" style="color:#999">#F6F4FB</span></div>
+      <div class="swatch" style="background:#D9D3EF"><span class="swatch-hex" style="color:#555">#D9D3EF</span></div>
+      <div class="swatch" style="background:#8B7EC8"><span class="swatch-hex">#8B7EC8</span></div>
+      <div class="swatch" style="background:#6D60B0"><span class="swatch-hex">#6D60B0</span></div>
+      <div class="swatch" style="background:#50439A"><span class="swatch-hex">#50439A</span></div>
+      <div class="swatch" style="background:#B0A8DE"><span class="swatch-hex">#B0A8DE</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#F6F4FB">Page background <span style="color:#6D60B0">#F6F4FB</span></div>
+      <div class="preview-card" style="background:white; border-color:#D9D3EF">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#EBE8F7; color:#50439A">✓ Licensed</span>
+          <span class="preview-badge" style="background:#EBE8F7; color:#50439A">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#6D60B0">View Profile →</a>
+          <button class="preview-btn" style="background:#6D60B0">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#EBE8F7">
+        <div class="preview-dot" style="background:#8B7EC8"></div>
+        <span class="preview-text" style="color:#50439A">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION D: Warm Teal -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">D — Warm Teal</span>
+      <span class="palette-tag">Familiar · Warm · Healthcare-adjacent</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F2F8F8"><span class="swatch-hex" style="color:#999">#F2F8F8</span></div>
+      <div class="swatch" style="background:#B8D9D8"><span class="swatch-hex" style="color:#555">#B8D9D8</span></div>
+      <div class="swatch" style="background:#4FA8A3"><span class="swatch-hex">#4FA8A3</span></div>
+      <div class="swatch" style="background:#368A85"><span class="swatch-hex">#368A85</span></div>
+      <div class="swatch" style="background:#1F6B67"><span class="swatch-hex">#1F6B67</span></div>
+      <div class="swatch" style="background:#83C8C5"><span class="swatch-hex">#83C8C5</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#F2F8F8">Page background <span style="color:#368A85">#F2F8F8</span></div>
+      <div class="preview-card" style="background:white; border-color:#B8D9D8">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#DFF0EF; color:#1F6B67">✓ Licensed</span>
+          <span class="preview-badge" style="background:#DFF0EF; color:#1F6B67">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#368A85">View Profile →</a>
+          <button class="preview-btn" style="background:#368A85">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#DFF0EF">
+        <div class="preview-dot" style="background:#4FA8A3"></div>
+        <span class="preview-text" style="color:#1F6B67">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION E: Dusty Blue-Periwinkle -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">E — Periwinkle Blue</span>
+      <span class="palette-tag">Soft · Premium · Emotional</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F3F5FB"><span class="swatch-hex" style="color:#999">#F3F5FB</span></div>
+      <div class="swatch" style="background:#C4CFF0"><span class="swatch-hex" style="color:#555">#C4CFF0</span></div>
+      <div class="swatch" style="background:#6B7FD4"><span class="swatch-hex">#6B7FD4</span></div>
+      <div class="swatch" style="background:#4F63C2"><span class="swatch-hex">#4F63C2</span></div>
+      <div class="swatch" style="background:#3448B0"><span class="swatch-hex">#3448B0</span></div>
+      <div class="swatch" style="background:#9DABE2"><span class="swatch-hex">#9DABE2</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#F3F5FB">Page background <span style="color:#4F63C2">#F3F5FB</span></div>
+      <div class="preview-card" style="background:white; border-color:#C4CFF0">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#E6E9F8; color:#3448B0">✓ Licensed</span>
+          <span class="preview-badge" style="background:#E6E9F8; color:#3448B0">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#4F63C2">View Profile →</a>
+          <button class="preview-btn" style="background:#4F63C2">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#E6E9F8">
+        <div class="preview-dot" style="background:#6B7FD4"></div>
+        <span class="preview-text" style="color:#3448B0">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION F: Dusty Rose-Mauve (bold bet) -->
+  <div class="palette-card">
+    <div class="palette-header">
+      <span class="palette-label">F — Dusty Mauve</span>
+      <span class="palette-tag">Bold bet · Feminine · Totally unique</span>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#FAF5F7"><span class="swatch-hex" style="color:#999">#FAF5F7</span></div>
+      <div class="swatch" style="background:#E8CEDD"><span class="swatch-hex" style="color:#555">#E8CEDD</span></div>
+      <div class="swatch" style="background:#B87898"><span class="swatch-hex">#B87898</span></div>
+      <div class="swatch" style="background:#9A5C80"><span class="swatch-hex">#9A5C80</span></div>
+      <div class="swatch" style="background:#7A4062"><span class="swatch-hex">#7A4062</span></div>
+      <div class="swatch" style="background:#D4A0B8"><span class="swatch-hex">#D4A0B8</span></div>
+    </div>
+    <div class="preview">
+      <div class="section-bg-preview" style="background:#FAF5F7">Page background <span style="color:#9A5C80">#FAF5F7</span></div>
+      <div class="preview-card" style="background:white; border-color:#E8CEDD">
+        <div class="preview-card-title">Sunrise Home Care — Alpharetta</div>
+        <div class="preview-card-sub">GA Licensed · Alzheimer's specialist · Accepting clients</div>
+        <div class="preview-badges">
+          <span class="preview-badge" style="background:#F5E6EF; color:#7A4062">✓ Licensed</span>
+          <span class="preview-badge" style="background:#F5E6EF; color:#7A4062">Bonded</span>
+          <span class="preview-badge" style="background:#FEF9C3; color:#7A5C0A">Medicaid OK</span>
+        </div>
+        <div class="preview-footer">
+          <a href="#" class="preview-link" style="color:#9A5C80">View Profile →</a>
+          <button class="preview-btn" style="background:#9A5C80">Get Matched</button>
+        </div>
+      </div>
+      <div class="preview-bar" style="background:#F5E6EF">
+        <div class="preview-dot" style="background:#B87898"></div>
+        <span class="preview-text" style="color:#7A4062">Verified agencies · No spam calls · Free to families</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p style="margin-top:32px; font-size:12px; color:#999; text-align:center;">Hover any swatch to see its hex code · Tell me A–F and I'll apply it to the full demo</p>
+
+</body>
+</html>
